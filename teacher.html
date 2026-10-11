@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sci-Lab • ห้องควบคุมครู</title><link rel="stylesheet" href="css/style.css"></head>
+<body><canvas id="bg"></canvas>
+<a class="topbtn l" href="index.html" title="กลับหน้านักเรียน">←</a>
+<section class="screen on" id="tLogin"><h1 class="logo">COMMAND CENTER</h1><div class="sub">ห้องควบคุมสำหรับครู</div>
+  <div class="card narrow"><label>รหัสผ่านครู</label><input id="pw" type="password"><div class="err" id="te"></div><button class="btn red" style="width:100%" id="pwBtn">เข้าสู่ระบบ</button></div></section>
+
+<section class="screen" id="tMain">
+  <div class="row" style="justify-content:space-between"><h2 style="flex:3">⚙️ ห้องควบคุม</h2><button class="btn ghost sm" id="logout" style="flex:0">ออก</button></div>
+  <div class="tabs"><button class="btn sm on" data-tab="rooms">🏫 ห้องเล่น</button><button class="btn sm ghost" data-tab="live">📡 กระดานสด</button><button class="btn sm ghost" data-tab="saved">📑 ที่บันทึกแล้ว</button><button class="btn sm ghost" data-tab="roster">👥 รายชื่อนักเรียน</button></div>
+
+  <div id="tab-rooms" class="card"><h3>สร้างห้องเล่น</h3>
+    <div class="row"><select id="newCls"></select><button class="btn red" id="mkRoom">สร้างห้อง + เจนรหัส 4 หลัก</button></div>
+    <div style="overflow-x:auto"><table class="t" id="roomTbl"></table></div></div>
+
+  <div id="tab-live" class="card" style="display:none">
+    <div class="row"><select id="liveRoom"></select><button class="btn sm" id="saveBtn" style="flex:0;white-space:nowrap">💾 บันทึกลง Google Sheets</button></div>
+    <div class="hint" id="liveInfo" style="margin:8px 0"></div><div class="pgrid" id="pgrid"></div></div>
+
+  <div id="tab-saved" class="card" style="display:none"><h3>ชีตที่บันทึกไว้</h3><div style="overflow-x:auto"><table class="t" id="savedTbl"></table></div></div>
+
+  <div id="tab-roster" class="card" style="display:none"><h3>รายชื่อนักเรียนพื้นฐาน (ใช้เทียบ มา/ขาด)</h3>
+    <div class="row"><select id="rosCls"></select><a class="btn sm ghost" id="masterLink" target="_blank" style="flex:0;white-space:nowrap">เปิดชีตหลัก</a></div>
+    <label>วางรายชื่อ บรรทัดละ 1 คน: เลขที่ [TAB หรือ ,] คำนำหน้า [TAB หรือ ,] ชื่อ-นามสกุล (หรือ เลขที่, ชื่อเต็มพร้อมคำนำหน้า)</label>
+    <textarea id="rosTxt" rows="10" placeholder="1,เด็กชาย,สมชาย ใจดี&#10;2,เด็กหญิง,สมหญิง รักเรียน"></textarea>
+    <div class="row" style="margin-top:10px"><button class="btn" id="rosSave">บันทึกรายชื่อ</button></div></div>
+</section>
+
+<div class="modal" id="modal"><div class="card" id="modalCard"></div></div>
+<script src="js/config.js"></script><script src="js/api.js"></script><script src="js/fx.js"></script><script src="js/teacher.js"></script>
+</body></html>

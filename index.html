@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sci-Lab: ภารกิจห้องทดลองอวกาศ</title><link rel="stylesheet" href="css/style.css"></head>
+<body><canvas id="bg"></canvas>
+<a class="topbtn l" href="teacher.html" title="สำหรับครู"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><path d="M3.5 21c0-4.7 3.8-7.5 8.5-7.5s8.5 2.8 8.5 7.5z"/></svg></a>
+<div class="topbtn r" id="musicBtn" title="เสียง">🔊</div>
+
+<section class="screen on" id="s-login1">
+  <h1 class="logo">SCI-LAB</h1><div class="sub">ภารกิจกอบกู้ห้องทดลองอวกาศ • Python Dictionary</div>
+  <div class="card narrow">
+    <label>ชื่อ-นามสกุล (ไม่ต้องใส่คำนำหน้า)</label><input id="fname" placeholder="เช่น สมชาย ใจดี" autocomplete="off">
+    <div class="hint" id="namePrev"></div>
+    <div class="row"><div><label>ชั้น</label><select id="fcls"></select></div><div><label>เลขที่</label><input id="fno" type="number" min="1" max="99" inputmode="numeric"></div></div>
+    <div class="err" id="e1"></div><button class="btn" style="width:100%" id="b1">ยืนยัน</button>
+  </div>
+</section>
+
+<section class="screen" id="s-login2">
+  <h1 class="logo">ACCESS</h1><div class="sub" id="welcome"></div>
+  <div class="card narrow">
+    <label>ชื่อเล่น</label><input id="fnick" maxlength="14" autocomplete="off">
+    <label>รหัสห้อง (4 หลัก จากครู)</label><input id="fcode" inputmode="numeric" maxlength="4" placeholder="• • • •" style="font:800 28px Orbitron;text-align:center;letter-spacing:.3em">
+    <div class="err" id="e2"></div>
+    <div class="row"><button class="btn ghost" id="b2back">ย้อนกลับ</button><button class="btn red" id="b2">เข้าห้องทดลอง</button></div>
+  </div>
+</section>
+
+<section class="screen" id="s-intro"><div class="card narrow" id="introCard"></div></section>
+
+<section class="screen" id="s-play">
+  <div class="hud"><span class="chip lvbadge" id="hLv"></span><span class="chip hearts" id="hHearts"></span><span class="chip" id="hScore"></span><button class="btn sm ghost" id="helpBtn">💡 ขอความช่วยเหลือ (1)</button></div>
+  <div class="timerbar" id="tbar"><i id="tfill"></i></div>
+  <div class="grid">
+    <div>
+      <div class="card scene" id="scene" data-fx=""><div class="big" id="sceneIcon"></div><div class="label" id="sceneLabel"></div>
+        <div style="margin-top:8px"><b id="pzTitle"></b><div class="hint" id="pzStory"></div></div></div>
+      <div class="card" style="margin-top:12px"><div class="hint">📦 lab_data (Dictionary ในระบบ)</div><pre class="dict" id="dict"></pre></div>
+    </div>
+    <div class="card">
+      <div class="hint">🖥️ ลากคำสั่งไปวางในช่องว่าง (หรือแตะเพื่อวาง)</div>
+      <div id="code"></div><div class="bank" id="bank"></div>
+      <div class="row" style="margin-top:12px"><button class="btn" id="runBtn">▶ RUN</button><button class="btn ghost" id="resetBtn">↺ ล้าง</button></div>
+      <div class="term" id="term"><span class="p">&gt;&gt;&gt; พร้อมรับคำสั่ง...</span></div>
+      <button class="btn red" id="nextBtn" style="display:none;margin-top:10px;width:100%">ไปต่อ ▶</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="s-end">
+  <h1 class="logo">MISSION COMPLETE</h1><div class="sub" id="endSub"></div>
+  <div class="podium" id="podium"></div>
+  <div class="card" style="overflow-x:auto"><h3>🏆 อันดับห้อง <span class="hint">(อัปเดตอัตโนมัติ)</span></h3><table class="lb" id="lb"></table></div>
+</section>
+
+<div class="modal" id="modal"><div class="card" id="modalCard"></div></div>
+<script src="js/config.js"></script><script src="js/api.js"></script><script src="js/audio.js"></script><script src="js/fx.js"></script><script src="js/levels.js"></script><script src="js/game.js"></script>
+</body></html>

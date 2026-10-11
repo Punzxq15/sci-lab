@@ -7,9 +7,11 @@ CONFIG.CLASSES.forEach(c => ["#newCls", "#rosCls"].forEach(s => $(s).insertAdjac
 
 async function login() {
   try { await call("teacherLogin"); sessionStorage.setItem("scilab_pw", PW); view("tMain"); loadRooms(); const i = await call("info"); $("#masterLink").href = i.masterUrl; loadRoster(); }
-  catch (e) { $("#te").textContent = e.message; sessionStorage.removeItem("scilab_pw"); view("tLogin"); }
+  catch (e) { $("#te").textContent = e.message; PW = ""; sessionStorage.removeItem("scilab_pw"); view("tLogin"); }
 }
-$("#pwBtn").onclick = () => { PW = $("#pw").value; login(); };
+$("#pwBtn").onclick = () => { PW = $("#pw").value.trim(); if (!PW) { $("#te").textContent = "กรุณาพิมพ์รหัสผ่าน"; return; } $("#te").textContent = "กำลังตรวจสอบ..."; login(); };
+$("#pwEye").onclick = () => { const i = $("#pw"), h = i.style.webkitTextSecurity === "none"; i.style.webkitTextSecurity = h ? "disc" : "none"; i.style.textSecurity = h ? "disc" : "none"; i.focus(); };
+setTimeout(() => $("#pw").focus(), 100);
 $("#pw").onkeydown = e => e.key === "Enter" && $("#pwBtn").click();
 $("#logout").onclick = () => { sessionStorage.clear(); location.reload(); };
 if (PW) login();
